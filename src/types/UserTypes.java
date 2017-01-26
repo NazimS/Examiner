@@ -1,4 +1,4 @@
-package az.examiner.types;
+package types;
 
 /**
  *

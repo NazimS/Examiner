@@ -1,4 +1,4 @@
-package az.examiner.pojos;
+package pojos;
 
 /**
  *

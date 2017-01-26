@@ -1,6 +1,6 @@
-package az.examiner.pojos;
+package pojos;
 
-import az.examiner.types.UserTypes;
+import types.UserTypes;
 
 /**
  *

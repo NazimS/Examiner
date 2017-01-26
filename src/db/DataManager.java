@@ -1,9 +1,9 @@
-package az.examiner.db;
+package db;
 
-import az.examiner.pojos.Answer;
-import az.examiner.pojos.Question;
-import az.examiner.pojos.Subject;
-import az.examiner.types.AnswerType;
+import pojos.Answer;
+import pojos.Question;
+import pojos.Subject;
+import types.AnswerType;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
