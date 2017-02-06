@@ -1,5 +1,7 @@
 package pojos;
 
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import types.UserTypes;
 
 /**
@@ -80,5 +82,4 @@ public class User {
     public void setAttemptCount(byte attemptCount) {
         this.attemptCount = attemptCount;
     }
-
 }

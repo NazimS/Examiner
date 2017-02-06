@@ -22,6 +22,8 @@ public class Examiner extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
         Scene scene = new Scene(root);
         stage.setScene(scene);
+        stage.setWidth(650);
+        stage.setHeight(500);
         stage.show();
     }
 

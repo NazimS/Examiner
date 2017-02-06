@@ -178,13 +178,12 @@ public class DataManager {
             preparedStatement.setString(1, user.getEmail());
             resultSet = preparedStatement.executeQuery();
             int attempts = resultSet.next() ? resultSet.getInt(1) : -1;
-            if(attempts >= 5){
+            if (attempts >= 5) {
                 query = "update users u set u.attempts = 0  , u.enabled = 0 where u.email = ? ";
                 preparedStatement = connection.prepareStatement(query);
                 preparedStatement.setString(1, user.getEmail());
                 preparedStatement.execute();
-            }
-            else if (attempts >= 0) {
+            } else if (attempts >= 0) {
                 attempts++;
                 query = "update users u set u.attempts = ? where u.email = ?";
                 preparedStatement = connection.prepareStatement(query);
@@ -202,7 +201,30 @@ public class DataManager {
                 e.printStackTrace(System.err);
             }
         }
+    }
 
+    public boolean signUpUser(User user) {
+        try {
+            connect();
+            String query = "INSERT INTO USERS (NAME,SURNAME,TYPE,EMAIL,PASSWORD) VALUES (?,?,?,?,?)";
+            preparedStatement = connection.prepareStatement(query);
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getSurname());
+            preparedStatement.setString(3, user.getUserType().getType());
+            preparedStatement.setString(4, user.getEmail());
+            preparedStatement.setString(5, user.getPassword());
+            preparedStatement.execute();
+            return true;
+        } catch (ClassNotFoundException | SQLException e) {
+            e.printStackTrace(System.err);
+            return false;
+        } finally {
+            try {
+                disconnect();
+            } catch (Exception e) {
+                e.printStackTrace(System.err);
+            }
+        }
     }
 
 }

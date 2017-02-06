@@ -1,10 +1,13 @@
 package controllers;
 
 import db.DataManager;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -44,7 +47,14 @@ public class loginController implements Initializable {
         }
     }
 
-    public void signup() {
-
+    @FXML
+    public void goToSignup() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/Signup.fxml"));
+            username.getScene().setRoot(root);
+        } catch (IOException ex) {
+            ex.printStackTrace(System.err);
+        }
     }
+
 }

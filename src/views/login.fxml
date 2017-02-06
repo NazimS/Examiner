@@ -28,7 +28,7 @@
                         <Insets />
                     </VBox.margin>
                 </PasswordField>
-                <Button fx:id="login" mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="286.0" style="-fx-background-color: black;" text="Login" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#login" prefHeight="42.0" prefWidth="286.0" style="-fx-background-color: black;" text="Login" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="17.0" />
                     </font>
@@ -38,7 +38,7 @@
                         <Font name="System Bold Italic" size="17.0" />
                     </font>
                 </Label>
-                <Button fx:id="signup" mnemonicParsing="false" onAction="#signup" prefHeight="25.0" prefWidth="301.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE">
+                <Button mnemonicParsing="false" onAction="#goToSignup" prefHeight="25.0" prefWidth="301.0" style="-fx-background-color: black;" text="Sign Up" textFill="WHITE">
                     <font>
                         <Font name="System Bold Italic" size="18.0" />
                     </font>
