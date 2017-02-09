@@ -15,10 +15,12 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import pojos.User;
 import types.UserTypes;
+import utilit.Validator;
 
 /**
  * FXML Controller class
@@ -41,6 +43,10 @@ public class SignupController implements Initializable {
     private PasswordField confirmpassword;
     @FXML
     private Button signup;
+
+    @FXML
+    private Label warning;
+
     private DataManager dataManager;
 
     @Override
@@ -54,7 +60,7 @@ public class SignupController implements Initializable {
 
         boolean filled = name.getText() != null && surname.getText() != null && email.getText() != null && password.getText() != null && types.getValue() != null;
         if (filled) {
-            if (password.getText().equals(confirmpassword.getText())) {
+            if (password.getText().equals(confirmpassword.getText()) && Validator.isValidPassword(password.getText())) {
                 //signup process
                 User user = new User();
                 user.setName(name.getText());
@@ -63,7 +69,7 @@ public class SignupController implements Initializable {
                 user.setUserType(UserTypes.parseFrom(types.getValue().toString()));
                 user.setPassword(password.getText());
                 boolean result = dataManager.signUpUser(user);
-                System.out.println(result+"****************************************************************");
+                System.out.println(result + "****************************************************************");
                 if (result) {
                     //go to login page again
                     goTologin();
@@ -74,6 +80,7 @@ public class SignupController implements Initializable {
             } else {
                 //message that password and confirm password is not equal
                 System.out.println("Pasword doenst matchs ************************************************");
+                warning.setText("Password doesnt match or doesnt pay requirement");
             }
         } else {
             // whether any field is empty , message and tell user
@@ -101,7 +108,7 @@ public class SignupController implements Initializable {
 
     public void goTologin() {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/views/Login.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
             name.getScene().setRoot(root);
         } catch (IOException ex) {
             ex.printStackTrace(System.err);
