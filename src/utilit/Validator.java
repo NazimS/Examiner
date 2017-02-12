@@ -11,7 +11,6 @@ package utilit;
  */
 public class Validator {
 
-
     public static boolean isValidPassword(String password) {
         try {
             return hasOneBigLetter(password) && hasOneLittleLetter(password) && hasOneDigit(password);
@@ -55,4 +54,49 @@ public class Validator {
         return false;
     }
 
+    public static boolean hasEtSymbol(String email) {
+        short counter = 0;
+        for (int i = 0; i < email.length(); i++) {
+            if (email.charAt(i) == '@') {
+                counter++;
+            }
+        }
+
+        if (counter == 1) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public static boolean hasDotAfterEt(String email) {
+        int atSymbolPosition = email.indexOf('@');
+        for (int i = atSymbolPosition; i < email.length(); i++) {
+
+            if (email.charAt(i) == '.') {
+                return true;
+            }
+        }
+        return false;
+    } 
 }
+   
+
+//    public static boolean isValidEmail(String email) {
+//        try {
+//            return hasEtSymbol(email);
+//        } catch (Exception e) {
+//            e.printStackTrace(System.err);
+//            return false;
+//        }
+//    }
+//      public static boolean hasEtSymbol (String email){
+//        for (int i = 0; i < email.lenght(); i++) {
+//        if (Character.is)
+//        }
+//          
+//          
+//          return false;
+//      
+//      }
+//}
