@@ -5,11 +5,26 @@
  */
 package utilit;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  *
  * @author Hp-Pc
  */
 public class Validator {
+
+    private static Pattern pattern;
+    private static Matcher matcher;
+
+    private static final String regex = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+            + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+    public static boolean isValidEmail(String email) {
+        pattern = Pattern.compile(regex);
+        matcher = pattern.matcher(email);
+        return matcher.matches();
+    }
 
     public static boolean isValidPassword(String password) {
         try {
@@ -20,7 +35,7 @@ public class Validator {
         }
     }
 
-    public static boolean hasOneBigLetter(String password) {
+    private static boolean hasOneBigLetter(String password) {
         for (int i = 0; i < password.length(); i++) {
             if (Character.isLetter(password.charAt(i)) && Character.isUpperCase(password.charAt(i))) {
                 return true;
@@ -29,7 +44,7 @@ public class Validator {
         return false;
     }
 
-    public static boolean hasOneLittleLetter(String password) {
+    private static boolean hasOneLittleLetter(String password) {
 
         for (int i = 0; i < password.length(); i++) {
             if (Character.isLetter(password.charAt(i)) && Character.isLowerCase(password.charAt(i))) {
@@ -42,7 +57,7 @@ public class Validator {
         return false;
     }
 
-    public static boolean hasOneDigit(String password) {
+    private static boolean hasOneDigit(String password) {
         for (int i = 0; i < password.length(); i++) {
             if (Character.isDigit(password.charAt(i))) {
                 return true;
@@ -54,49 +69,4 @@ public class Validator {
         return false;
     }
 
-    public static boolean hasEtSymbol(String email) {
-        short counter = 0;
-        for (int i = 0; i < email.length(); i++) {
-            if (email.charAt(i) == '@') {
-                counter++;
-            }
-        }
-
-        if (counter == 1) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    public static boolean hasDotAfterEt(String email) {
-        int atSymbolPosition = email.indexOf('@');
-        for (int i = atSymbolPosition; i < email.length(); i++) {
-
-            if (email.charAt(i) == '.') {
-                return true;
-            }
-        }
-        return false;
-    } 
 }
-   
-
-//    public static boolean isValidEmail(String email) {
-//        try {
-//            return hasEtSymbol(email);
-//        } catch (Exception e) {
-//            e.printStackTrace(System.err);
-//            return false;
-//        }
-//    }
-//      public static boolean hasEtSymbol (String email){
-//        for (int i = 0; i < email.lenght(); i++) {
-//        if (Character.is)
-//        }
-//          
-//          
-//          return false;
-//      
-//      }
-//}

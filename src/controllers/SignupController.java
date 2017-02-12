@@ -60,7 +60,8 @@ public class SignupController implements Initializable {
 
         boolean filled = name.getText() != null && surname.getText() != null && email.getText() != null && password.getText() != null && types.getValue() != null;
         if (filled) {
-            if (password.getText().equals(confirmpassword.getText()) && Validator.isValidPassword(password.getText())) {
+            if (password.getText().equals(confirmpassword.getText()) && Validator.isValidPassword(password.getText())
+                    && Validator.isValidEmail(email.getText())) {
                 //signup process
                 User user = new User();
                 user.setName(name.getText());
@@ -69,7 +70,6 @@ public class SignupController implements Initializable {
                 user.setUserType(UserTypes.parseFrom(types.getValue().toString()));
                 user.setPassword(password.getText());
                 boolean result = dataManager.signUpUser(user);
-                System.out.println(result + "****************************************************************");
                 if (result) {
                     //go to login page again
                     goTologin();
@@ -79,8 +79,7 @@ public class SignupController implements Initializable {
                 }
             } else {
                 //message that password and confirm password is not equal
-                System.out.println("Pasword doenst matchs ************************************************");
-                warning.setText("Password doesnt match or doesnt pay requirement");
+                warning.setText("Password doesnt match or doesnt pay requirement , or email is invalid");
             }
         } else {
             // whether any field is empty , message and tell user
@@ -113,6 +112,5 @@ public class SignupController implements Initializable {
         } catch (IOException ex) {
             ex.printStackTrace(System.err);
         }
-
     }
 }

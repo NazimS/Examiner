@@ -44,6 +44,7 @@ public class loginController implements Initializable {
             dataManager.countFails(user);
         } else {
             System.out.println("**********************************************************");
+            
         }
     }
 
