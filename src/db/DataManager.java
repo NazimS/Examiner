@@ -227,4 +227,30 @@ public class DataManager {
         }
     }
 
+    public long insertQuestion(Question question) {
+        long questionId = -1;
+        try {
+            connect();
+            String insertQuery = "insert into questions (question_data , subj_id) values ( ?, ? )";
+            preparedStatement = connection.prepareCall(insertQuery);
+            preparedStatement.setString(1, question.getQuestionData());
+            preparedStatement.setInt(2, question.getSubjId());
+            preparedStatement.executeUpdate();
+            ResultSet generatedKeys = preparedStatement.getGeneratedKeys();
+            if (generatedKeys.next()) {
+                questionId = generatedKeys.getLong(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+            questionId = -1;
+        } finally {
+            try {
+                disconnect();
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.err);
+            }
+        }
+        return questionId;
+    }
+
 }

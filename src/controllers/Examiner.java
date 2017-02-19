@@ -24,6 +24,7 @@ public class Examiner extends Application {
         stage.setScene(scene);
         stage.setWidth(650);
         stage.setHeight(500);
+        stage.setMaximized(true);
         stage.show();
     }
 

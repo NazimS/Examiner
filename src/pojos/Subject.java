@@ -25,4 +25,9 @@ public class Subject {
         this.subjectName = subjectName;
     }
 
+    @Override
+    public String toString() {
+        return subjectName;
+    }
+
 }

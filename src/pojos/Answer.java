@@ -11,7 +11,7 @@ public class Answer {
     private int answerId;
     private String answerData;
     private AnswerType answerType;
-    private int questionId;
+    private long questionId;
 
     public int getAnswerId() {
         return answerId;
@@ -37,11 +37,11 @@ public class Answer {
         this.answerType = answerType;
     }
 
-    public int getQuestionId() {
+    public long getQuestionId() {
         return questionId;
     }
 
-    public void setQuestionId(int questionId) {
+    public void setQuestionId(long questionId) {
         this.questionId = questionId;
     }
 

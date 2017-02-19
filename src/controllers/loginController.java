@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import pojos.User;
+import types.UserTypes;
 
 public class loginController implements Initializable {
 
@@ -43,8 +44,14 @@ public class loginController implements Initializable {
             user.setEmail(username.getText());
             dataManager.countFails(user);
         } else {
-            System.out.println("**********************************************************");
-            
+            try {
+                String destination;
+                destination = user.getUserType() == UserTypes.TEACHER ? "/views/Teacher.fxml" : "/views/Student.fxml";
+                Parent root = FXMLLoader.load(getClass().getResource(destination));
+                username.getScene().setRoot(root);
+            } catch (IOException ex) {
+                ex.printStackTrace(System.err);
+            }
         }
     }
 

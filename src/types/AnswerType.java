@@ -24,6 +24,14 @@ public enum AnswerType {
         return NONE;
     }
 
+    public static AnswerType parseFrom(boolean type) {
+        if (type) {
+            return TRUE;
+        } else {
+            return FALSE;
+        }
+    }
+
     public String getType() {
         return type;
     }
