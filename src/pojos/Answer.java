@@ -50,4 +50,8 @@ public class Answer {
         return "Answer{" + "answerId=" + answerId + ", answerData=" + answerData + ", answerType=" + answerType + ", questionId=" + questionId + '}';
     }
 
+    public int getSubjId() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

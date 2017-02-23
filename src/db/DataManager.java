@@ -253,4 +253,25 @@ public class DataManager {
         return questionId;
     }
 
+    public void insertAnswer(Answer answer) {
+        try {
+            connect();
+            String insertQuery = "insert into answers (answer_data ,correctness,quest_id) values ( ?, ?, ? )";
+            preparedStatement = connection.prepareCall(insertQuery);
+            preparedStatement.setString(1, answer.getAnswerData());
+            preparedStatement.setString(2, answer.getAnswerType().getType());
+            preparedStatement.setLong(3, answer.getQuestionId());
+            preparedStatement.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            try {
+                disconnect();
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.err);
+
+            }
+        }
+
+    }
 }
