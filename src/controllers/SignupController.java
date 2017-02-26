@@ -99,7 +99,7 @@ public class SignupController implements Initializable {
                 confirmpassword.setStyle(" -fx-border-color : red ");
             }
             if (types.getValue() == null) {
-                types.setStyle("-fx-border-color : red ");
+                types.setStyle("-fx-border-color : red ");   
             }
         }
 

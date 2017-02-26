@@ -6,11 +6,14 @@
 package controllers;
 
 import db.DataManager;
+import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ComboBox;
@@ -113,6 +116,15 @@ public class TeacherController implements Initializable {
     @FXML
     public void refreshMessage() {
         messages.setText("");
+    }
+    
+      public void goTologin() {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/login.fxml"));
+            question.getScene().setRoot(root);
+        } catch (IOException ex) {
+            ex.printStackTrace(System.err);
+        }
     }
     
 }
