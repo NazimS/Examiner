@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
@@ -20,7 +27,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="654.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherController">
+<AnchorPane id="AnchorPane" prefHeight="470.0" prefWidth="654.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.TeacherController">
     <stylesheets>
         <URL value="@/styles/teacher.css" />
     </stylesheets>
@@ -57,7 +64,7 @@
                 </HBox>
                 <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                     <children>
-                  <Button alignment="TOP_LEFT" mnemonicParsing="false" onAction="#goTologin" prefHeight="35.0" prefWidth="35.0" style="-fx-background-radius: 25; -fx-background-insets: 0; -fx-border-radius: 25; -fx-background-color: transparent;" textFill="#282626">
+                  <Button alignment="TOP_LEFT" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#goTologin" prefHeight="35.0" prefWidth="35.0" style="-fx-background-radius: 25; -fx-background-insets: 0; -fx-border-radius: 25; -fx-background-color: transparent;" textFill="#282626">
                      <graphic>
                         <ImageView fitHeight="50.0" fitWidth="61.0" pickOnBounds="true" preserveRatio="true">
                            <image>
@@ -72,7 +79,7 @@
                         </ImageView>
                      </graphic>
                      <HBox.margin>
-                        <Insets bottom="6.0" top="2.0" />
+                        <Insets bottom="6.0" left="-20.0" top="2.0" />
                      </HBox.margin>
                      <padding>
                         <Insets bottom="6.0" />

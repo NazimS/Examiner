@@ -1,11 +1,57 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="views.StudentController">
-    
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.StudentController">
+   <children>
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="66.0" text="Go Back" />
+      <HBox alignment="CENTER_RIGHT" layoutX="105.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="498.0">
+         <children>
+            <Label text="Elmar Mammadov">
+               <font>
+                  <Font name="Arial Bold Italic" size="20.0" />
+               </font>
+               <HBox.margin>
+                  <Insets left="10.0" top="10.0" />
+               </HBox.margin>
+            </Label>
+            <ComboBox prefHeight="25.0" prefWidth="185.0">
+               <HBox.margin>
+                  <Insets left="40.0" top="20.0" />
+               </HBox.margin>
+            </ComboBox>
+         </children>
+      </HBox>
+      <GridPane layoutX="202.0" layoutY="149.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="80.0">
+        <columnConstraints>
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="203.0" minHeight="10.0" prefHeight="203.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="77.0" prefWidth="628.0" text="Pisik nedir ? " textAlignment="CENTER">
+               <font>
+                  <Font name="Bodoni MT" size="16.0" />
+               </font>
+            </Label>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
+               <children>
+                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="496.0" layoutY="12.0" mnemonicParsing="false" text="Submit" textAlignment="RIGHT" />
+                  <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Previous Question" />
+                  <Button layoutX="148.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Next Question" />
+               </children>
+            </AnchorPane>
+         </children>
+      </GridPane>
+   </children>
 </AnchorPane>
