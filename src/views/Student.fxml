@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.text.*?>
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="controllers.StudentController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.StudentController">
    <children>
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="66.0" text="Go Back" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#goTologin" prefHeight="37.0" prefWidth="66.0" style="-fx-background-radius: 25; -fx-background-insets: 0; -fx-border-radius: 25; -fx-background-color: transparent;">
+         <graphic>
+            <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@returns--button.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
       <HBox alignment="CENTER_RIGHT" layoutX="105.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="56.0" prefWidth="498.0">
          <children>
-            <Label text="Elmar Mammadov">
+            <Label fx:id="name" text="Elmar Mammadov">
                <font>
                   <Font name="Arial Bold Italic" size="20.0" />
                </font>
@@ -22,7 +34,7 @@
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
             </Label>
-            <ComboBox prefHeight="25.0" prefWidth="185.0">
+            <ComboBox fx:id="subjects" onAction="#refresquestionList" prefHeight="25.0" prefWidth="185.0">
                <HBox.margin>
                   <Insets left="40.0" top="20.0" />
                </HBox.margin>
@@ -39,18 +51,50 @@
           <RowConstraints maxHeight="101.0" minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="77.0" prefWidth="628.0" text="Pisik nedir ? " textAlignment="CENTER">
+            <Label fx:id="question" alignment="CENTER" contentDisplay="CENTER" prefHeight="77.0" prefWidth="628.0" style="-fx-border-width: 2; -fx-border-color: green;" textAlignment="CENTER">
                <font>
                   <Font name="Bodoni MT" size="16.0" />
                </font>
             </Label>
             <AnchorPane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
                <children>
-                  <Button alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="496.0" layoutY="12.0" mnemonicParsing="false" text="Submit" textAlignment="RIGHT" />
-                  <Button layoutX="14.0" layoutY="12.0" mnemonicParsing="false" text="Previous Question" />
-                  <Button layoutX="148.0" layoutY="12.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="104.0" text="Next Question" />
+                  <Button fx:id="submit" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="496.0" layoutY="12.0" mnemonicParsing="false" text="Submit" textAlignment="RIGHT" />
+                  <Button fx:id="previous" layoutX="14.0" layoutY="12.0" mnemonicParsing="false" onAction="#goToPreviousQuestion" text="Previous Question" />
+                  <Button fx:id="next" layoutX="148.0" layoutY="12.0" mnemonicParsing="false" onAction="#goToNextQuestion" prefHeight="25.0" prefWidth="104.0" text="Next Question" />
                </children>
             </AnchorPane>
+            <GridPane alignment="CENTER" nodeOrientation="LEFT_TO_RIGHT" prefHeight="203.0" prefWidth="571.0" GridPane.halignment="CENTER" GridPane.rowIndex="1">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <RadioButton fx:id="variantA" mnemonicParsing="false">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="variantC" mnemonicParsing="false" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="variantB" mnemonicParsing="false" GridPane.columnIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </RadioButton>
+                  <RadioButton fx:id="variantD" mnemonicParsing="false" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <GridPane.margin>
+                        <Insets left="20.0" />
+                     </GridPane.margin>
+                  </RadioButton>
+               </children>
+            </GridPane>
          </children>
       </GridPane>
    </children>
