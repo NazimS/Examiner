@@ -274,4 +274,23 @@ public class DataManager {
         }
 
     }
+
+    public long  validateAnswer(Question question) {
+         String insertQuery = " SELECT answer_id FROM answers a  where a.quest_id = ? and a.correctness = 'true' " ;
+         
+        try {
+            connect();
+            
+
+        } catch (Exception e) {
+            e.printStackTrace(System.err);
+        } finally {
+            try {
+                disconnect();
+            } catch (SQLException ex) {
+                ex.printStackTrace(System.err);
+            }
+        }
+return 1 ;
+    }
 }

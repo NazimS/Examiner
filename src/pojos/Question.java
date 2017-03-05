@@ -9,6 +9,7 @@ public class Question {
     private int questionId;
     private String questionData;
     private int subjId;
+    private int selectedAnswerId;
 
     public int getQuestionId() {
         return questionId;
@@ -34,6 +35,14 @@ public class Question {
         this.subjId = subjId;
     }
 
+    public int getSelectedAnswerId() {
+        return selectedAnswerId;
+    }
+
+    public void setSelectedAnswerId(int selectedAnswerId) {
+        this.selectedAnswerId = selectedAnswerId;
+    }
+    
     @Override
     public String toString() {
         return "Question{" + "questionId=" + questionId + ", questionData=" + questionData + ", subjId=" + subjId + '}';
