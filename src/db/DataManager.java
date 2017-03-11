@@ -275,13 +275,17 @@ public class DataManager {
 
     }
 
-    public long  validateAnswer(Question question) {
-         String insertQuery = " SELECT answer_id FROM answers a  where a.quest_id = ? and a.correctness = 'true' " ;
-         
+    public long validateAnswer(Question question) {
+        long correctAnswerId = -1;
         try {
             connect();
-            
-
+            String insertQuery = " SELECT answer_id FROM answers a  where a.quest_id = ? and a.correctness = 'true' ";
+            preparedStatement = connection.prepareStatement(insertQuery);
+            preparedStatement.setLong(1, question.getQuestionId());
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                   correctAnswerId = resultSet.getLong(1);
+            }
         } catch (Exception e) {
             e.printStackTrace(System.err);
         } finally {
@@ -291,6 +295,6 @@ public class DataManager {
                 ex.printStackTrace(System.err);
             }
         }
-return 1 ;
+        return correctAnswerId;
     }
 }

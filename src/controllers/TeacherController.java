@@ -63,7 +63,7 @@ public class TeacherController implements Initializable {
         dataManager = new DataManager();
         List<Subject> subjectList = dataManager.getSubjects();
         subjects.getItems().addAll(subjectList);
-        subjects.setValue(subjectList.get(0));
+       // subjects.setValue(subjectList.get(0));
     }
     
     @FXML

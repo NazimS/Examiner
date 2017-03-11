@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
+import javafx.scene.control.Toggle;
 import javafx.scene.control.ToggleGroup;
 import pojos.Answer;
 import pojos.Question;
@@ -77,6 +78,17 @@ public class StudentController implements Initializable {
             currentQuestion++;
         }
         setCurrentQuestion();
+        Answer selectedAnswer = setSelectedAnwer(questionList.get(currentQuestion));
+        if (selectedAnswer == null) {
+            group.getSelectedToggle().setSelected(false);
+        }
+        if (group.getSelectedToggle() != null) {
+            for (Toggle t : group.getToggles()) {
+                if (((Answer) t.getUserData()).equals(selectedAnswer)) {
+                    t.setSelected(true);
+                }
+            }
+        }
         if (currentQuestion == questionList.size() - 1) {
             next.setVisible(false);
         }
@@ -90,6 +102,14 @@ public class StudentController implements Initializable {
             currentQuestion--;
         }
         setCurrentQuestion();
+        Answer selectedAnswer = setSelectedAnwer(questionList.get(currentQuestion));
+        if (group.getSelectedToggle() != null) {
+            for (Toggle t : group.getToggles()) {
+                if (((Answer) t.getUserData()).equals(selectedAnswer)) {
+                    t.setSelected(true);
+                }
+            }
+        }
         if (currentQuestion == 0) {
             previous.setVisible(false);
         }
@@ -119,11 +139,29 @@ public class StudentController implements Initializable {
         if (group.getSelectedToggle() != null) {
             Answer selectedAnswer = (Answer) group.getSelectedToggle().getUserData();
             questionList.get(currentQuestion).setSelectedAnswerId(selectedAnswer.getAnswerId());
+            System.out.println("selected******************************************************");
         }
     }
 
-    public void submit() {
+    private Answer setSelectedAnwer(Question question) {
+        for (Answer a : answerList) {
+            if (question.getSelectedAnswerId() == a.getAnswerId()) {
+                return a;
+            }
+        }
+        return null;
+    }
+    int trueAnswers = 0;
+    int wrongAnswers = 0;
 
+    public void submit() {
+        for (Question q : questionList) {
+            if (q.getSelectedAnswerId() == datamanager.validateAnswer(q)) {
+                trueAnswers++;
+            } else {
+                wrongAnswers++;
+            }
+        }
     }
 
     public void goTologin() {
