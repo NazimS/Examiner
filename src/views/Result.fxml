@@ -3,15 +3,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.111" fx:controller="controllers.ResultController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2F4F4F;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.ResultController">
    <children>
-      <GridPane layoutX="200.0" layoutY="155.0" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
+      <GridPane layoutX="200.0" layoutY="155.0" style="-fx-border-color: white;" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="20.0">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
@@ -22,30 +24,52 @@
             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text=" Cixis">
+            <Button minHeight="-Infinity" mnemonicParsing="false" onAction="#goToLogin" prefHeight="30.0" prefWidth="40.0" style="-fx-background-radius: 15px; -fx-background-insets: 0; -fx-border-radius: 15px; -fx-background-color: white;">
                <GridPane.margin>
-                  <Insets bottom="70.0" />
+                  <Insets bottom="70.0" left="10.0" top="25.0" />
                </GridPane.margin>
+               <graphic>
+                  <ImageView fitHeight="40.0" fitWidth="52.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@Button%20-%20Inay%20-%20Exit.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <font>
+                  <Font size="14.0" />
+               </font>
             </Button>
-            <Label prefHeight="17.0" prefWidth="216.0" text="Telebe : ">
+            <Label fx:id="telebe" prefHeight="14.0" prefWidth="263.0" text="Telebe  " textFill="#f8f3f3">
                <GridPane.margin>
-                  <Insets left="100.0" top="70.0" />
+                  <Insets bottom="50.0" left="100.0" top="70.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
             </Label>
-            <Label prefHeight="17.0" prefWidth="179.0" text="İmtahan neticesi :" GridPane.rowIndex="1">
+            <Label fx:id="netice" prefHeight="17.0" prefWidth="271.0" text="İmtahan neticesi   " textFill="#fffdfd" GridPane.rowIndex="1">
                <GridPane.margin>
-                  <Insets left="100.0" top="70.0" />
+                  <Insets bottom="50.0" left="100.0" top="70.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
             </Label>
-            <Label prefHeight="17.0" prefWidth="218.0" text="Duzgun cavablarin sayi :" GridPane.rowIndex="2">
+            <Label fx:id="duzgun" prefHeight="17.0" prefWidth="304.0" text="Duzgun cavablarin sayi " textFill="#f5efef" GridPane.rowIndex="2">
                <GridPane.margin>
-                  <Insets left="100.0" top="70.0" />
+                  <Insets bottom="50.0" left="100.0" top="70.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
             </Label>
-            <Label prefHeight="17.0" prefWidth="210.0" text="Sehv cavablarin sayi :" GridPane.rowIndex="3">
+            <Label fx:id="sehv" prefHeight="17.0" prefWidth="304.0" text="Sehv cavablarin sayi " textFill="#f2ebeb" GridPane.rowIndex="3">
                <GridPane.margin>
-                  <Insets left="100.0" top="70.0" />
+                  <Insets bottom="50.0" left="100.0" top="70.0" />
                </GridPane.margin>
+               <font>
+                  <Font name="System Bold Italic" size="18.0" />
+               </font>
             </Label>
          </children>
       </GridPane>

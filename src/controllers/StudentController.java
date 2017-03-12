@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -30,7 +33,7 @@ public class StudentController implements Initializable {
     @FXML
     private Button next;
     @FXML
-    private Label name;
+    private Label name,countdown;
     @FXML
     private Label question;
     @FXML
@@ -66,6 +69,7 @@ public class StudentController implements Initializable {
         if (questionList.size() == 1) {
             next.setVisible(false);
         }
+        startCountDown();
     }
 
     public void setCurrentQuestion() {
@@ -151,8 +155,8 @@ public class StudentController implements Initializable {
         }
         return null;
     }
-    int trueAnswers = 0;
-    int wrongAnswers = 0;
+    static int trueAnswers = 0;
+    static int wrongAnswers = 0;
 
     public void submit() {
         for (Question q : questionList) {
@@ -161,6 +165,17 @@ public class StudentController implements Initializable {
             } else {
                 wrongAnswers++;
             }
+
+        }
+    }
+
+    public void goToResult() {
+        submit();
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("/views/Result.fxml"));
+            previous.getScene().setRoot(root);
+        } catch (IOException ex) {
+            ex.printStackTrace(System.err);
         }
     }
 
@@ -173,4 +188,26 @@ public class StudentController implements Initializable {
         }
     }
 
+    
+    Timer timer = new Timer();
+    int second = 10;
+    public void startCountDown() {
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(new Runnable() {
+                    @Override
+                    public void run() {
+                        second--;
+                        countdown.setText(second+"");
+                        if (second == 0) {
+                            timer.cancel();
+                        }
+                    }
+                });
+            }
+        }, 1000, 1000); //Every 1 second
+    }
+    
+    
 }

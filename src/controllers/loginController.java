@@ -26,7 +26,7 @@ public class loginController implements Initializable {
     @FXML
     private Button signup;
     private DataManager dataManager;
-
+    public static User loginedUser;
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         dataManager = new DataManager();
@@ -37,6 +37,7 @@ public class loginController implements Initializable {
         user.setEmail(username.getText());
         user.setPassword(password.getText());
         user = dataManager.login(user);
+        loginedUser = user;
         if (user == null) {
             username.setStyle("-fx-border-color : red");
             password.setStyle("-fx-border-color : red");
