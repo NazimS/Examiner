@@ -33,7 +33,7 @@
                   <Font name="System Bold Italic" size="14.0" />
                </font>
             </Label>
-            <Label fx:id="name" style="-fx-background-color: green; -fx-background-radius: 2em; -fx-padding: 4px;" text="Elmar Mammadov" textFill="#fffafa">
+            <Label fx:id="name" prefHeight="31.0" prefWidth="178.0" style="-fx-background-color: green; -fx-background-radius: 2em; -fx-padding: 4px;" textFill="#fffafa">
                <font>
                   <Font name="Arial Bold Italic" size="20.0" />
                </font>

@@ -10,13 +10,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.paint.Color;
 
 public class ResultController implements Initializable {
 
     @FXML
     private Button exit;
     @FXML
-    private Label telebe;
+    private Label telebe, pass;
     @FXML
     private Label netice;
     @FXML
@@ -30,9 +31,15 @@ public class ResultController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         duzgun.setText(duzgun.getText() + " : " + StudentController.trueAnswers);
         sehv.setText(sehv.getText() + " : " + StudentController.wrongAnswers);
-        netice.setText(netice.getText() + " : "
-                + round(100.00 * StudentController.trueAnswers / (StudentController.trueAnswers + StudentController.wrongAnswers),2) + " %");
+        double finalResult = round(100.00 * StudentController.trueAnswers / (StudentController.trueAnswers + StudentController.wrongAnswers), 2);
+        netice.setText(netice.getText() + " : " + finalResult + " %");
         telebe.setText(telebe.getText() + " : " + loginController.loginedUser.getName() + " " + loginController.loginedUser.getSurname());
+        if (finalResult > 50.00) {
+            pass.setText(" Imtahandan muveffeqiyyetle  kecdiniz ");
+        } else {
+            pass.setTextFill(Color.RED);
+            pass.setText(" Imtahandan kesildiniz ");
+        }
     }
 
     public void goToLogin() {
@@ -56,6 +63,4 @@ public class ResultController implements Initializable {
         return (double) tmp / factor;
     }
 
-     
-    
 }

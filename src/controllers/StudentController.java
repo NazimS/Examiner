@@ -33,7 +33,7 @@ public class StudentController implements Initializable {
     @FXML
     private Button next;
     @FXML
-    private Label name,countdown;
+    private Label name, countdown;
     @FXML
     private Label question;
     @FXML
@@ -60,6 +60,7 @@ public class StudentController implements Initializable {
         subjects.getItems().addAll(subjectList);
         //subjects.setValue(subjectList.get(0));//acilan kimi 0-ci secilmis kimi gosterir
         previous.setVisible(false);
+        name.setText(name.getText() + "  " + loginController.loginedUser.getName() + " " + loginController.loginedUser.getSurname());
     }
 
     public void refresquestionList() {
@@ -70,6 +71,7 @@ public class StudentController implements Initializable {
             next.setVisible(false);
         }
         startCountDown();
+        subjects.setDisable(true);
     }
 
     public void setCurrentQuestion() {
@@ -188,26 +190,50 @@ public class StudentController implements Initializable {
         }
     }
 
-    
     Timer timer = new Timer();
-    int second = 10;
+    int hour;
+    int min;
+    int second;
+    private final int TIME = 90;//in seconds
+
+    private void initializeTime() {
+        hour = TIME / 3600;
+        min = (TIME % 3600) / 60;
+        second = (TIME % 3600) % 60;
+    }
+
     public void startCountDown() {
+        initializeTime();
         timer.schedule(new TimerTask() {
+            
             @Override
             public void run() {
                 Platform.runLater(new Runnable() {
                     @Override
                     public void run() {
                         second--;
-                        countdown.setText(second+"");
-                        if (second == 0) {
+                        countdown.setText(hour + " : " + min + " : " + second);
+                        
+                        if (second == 0 && min == 0 && hour == 0) {
                             timer.cancel();
+                            goToResult();
                         }
+                        ////////////////////////////////////////////////
+                        if (second == 0 && min >0) {
+                            second = 59;
+                            min--;
+                        }
+                        if(min == 0 && hour>0){
+                            min = 59;
+                            hour--;
+                        }
+                        ///////////////////////////////////////////////
+
+                        
                     }
                 });
             }
         }, 1000, 1000); //Every 1 second
     }
-    
-    
+
 }
