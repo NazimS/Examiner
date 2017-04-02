@@ -126,7 +126,7 @@ public class StudentController implements Initializable {
 
     public void getCurrentAnswers() {
         answerList = datamanager.getAnswers(questionList.get(currentQuestion));
-        //radiobuttonlari set etmek
+        //radiobuttonlari set etmek-
         variantA.setUserData(answerList.get(0));
         variantA.setText(answerList.get(0).getAnswerData());
 
